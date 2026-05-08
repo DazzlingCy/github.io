@@ -169,14 +169,14 @@
         .log-entry-time { color: var(--accent); font-size: 9px; margin-bottom: 6px; font-weight: 900; letter-spacing: 1px; opacity: 0.9; }
         .log-entry-content { line-height: 1.7; color: rgba(255,255,255,1); word-break: break-word; }
 
-        /* 日志入口按钮 */
+        /* 日志入口按钮 (布局调整：移除绝对定位) */
         .log-entry-btn {
-            position: absolute; bottom: 120px; left: 24px;
             background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px); padding: 12px 22px; border-radius: 99px;
-            display: flex; align-items: center; gap: 10px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
             color: #fff; font-size: 12px; font-weight: 800; letter-spacing: 2px;
-            z-index: 50; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.3s;
+            cursor: pointer;
         }
         .log-entry-btn:active { transform: scale(0.92); background: rgba(255,255,255,0.2); }
 
@@ -334,7 +334,7 @@
                 </div>
 
                 <div id="home-route-list" class="space-y-6">
-                    <!-- 路线卡片由逻辑渲染或初始占位 -->
+                    <!-- 路线卡片 -->
                     <div class="bg-slate-50 rounded-[2.2rem] p-5 flex gap-5 border border-slate-100 transition-transform active:scale-[0.98]">
                         <div class="w-24 h-24 rounded-3xl overflow-hidden relative shrink-0 shadow-md">
                             <img src="https://images.unsplash.com/photo-1599591452655-08e08d6d6da7?w=300&h=300&fit=crop" class="w-full h-full object-cover">
@@ -419,7 +419,6 @@
             </div>
         </header>
         <div class="inner-voice-bar animate__animated animate__fadeIn" id="voice-bar"><div class="voice-city-tag" id="voice-city-name">HANGZHOU</div><p id="thought-content"></p></div>
-        <button onclick="openLog()" class="log-entry-btn animate__animated animate__fadeInLeft"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>旅行日志</button>
 
         <div id="log-modal" class="mission-log-modal" onclick="closeLog(event)">
             <div class="mission-log-content animate__animated animate__zoomIn" onclick="event.stopPropagation()">
@@ -428,8 +427,17 @@
                 <div class="log-history-area log-scrollbar" id="log-history-container"></div>
             </div>
         </div>
+
         <div class="map-viewport" id="map-viewport"><svg id="world-map" class="world-map-svg" viewBox="0 0 1000 500"><g id="land-layer"></g><g id="flight-paths-layer"></g><g id="nodes-layer"></g></svg></div>
-        <div class="fixed bottom-14 left-0 w-full flex justify-center px-8 z-30"><button id="btn-next-target" class="btn-luxury w-full max-w-xs border-teal-400/30 text-teal-400 bg-teal-400/10 backdrop-blur-md font-black tracking-[0.4em]">开启探索挑战</button></div>
+        
+        <!-- 修改布局：将日志按钮放在开启探索挑战正下方 -->
+        <div class="fixed bottom-10 left-0 w-full flex flex-col items-center gap-3 px-8 z-30">
+            <button id="btn-next-target" class="btn-luxury w-full max-w-xs border-teal-400/30 text-teal-400 bg-teal-400/10 backdrop-blur-md font-black tracking-[0.4em]">开启探索挑战</button>
+            <button onclick="openLog()" class="log-entry-btn w-full max-w-xs animate__animated animate__fadeInUp">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                旅行日志
+            </button>
+        </div>
     </section>
 
     <!-- STEP 4: 介绍 -->
@@ -496,6 +504,7 @@
     </section>
 
     <script>
+        // 全部 15 个全球城市故事链已恢复
         const storyChain = [
             { id: 'Hangzhou', name: '杭州', x: 800, y: 195, lat: '30.27N', lng: '120.15E', thought: '西湖的晨曦，比屏幕亮多了。', log: '西湖水汽充足，适宜奔跑。这是梦醒的第一站。', desc: '在断桥的烟雨中，你听见那个十岁小孩在旧地图前许下的诺言。杭州的温润包裹着你，每一步都是在与过去的自己重逢，湖光山色是最好的洗尘礼。', routes: ['西湖：柳浪闻莺', '龙井：云雾深处', '灵隐：空山梵呗', '运河：旧梦长廊', '良渚：最初心跳'], routeImages: ['https://images.unsplash.com/photo-1599591452655-08e08d6d6da7?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1543161353-85f403f2956c?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1597523910901-526462725838?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1590487988256-9ed24133863e?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1563242080-87a2688b146f?w=300&h=300&fit=crop'] },
             { id: 'Beijing', name: '北京', x: 790, y: 155, lat: '39.90N', lng: '116.40E', thought: '红墙下的风，带着几千年的重量。', log: '中轴线磁场平稳，历史的脉搏正在加速。', desc: '站在世界的脊梁上，中轴线的红墙在阳光下威严而沉默。跑过胡同深处的烟火，跨过万里的长城残垣，感受跨越两千年的磅礴回响，这不仅是路，更是脊梁。', routes: ['中轴威仪', '故宫斜阳', '皇家晚风', '长城脊梁', '什刹烟火'], routeImages: ['https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1555505012-320485675e87?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1529921879218-f99546d03a9d?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1536647245842-8820c7844062?w=300&h=300&fit=crop'] },
@@ -503,9 +512,9 @@
             { id: 'Tokyo', name: '东京', x: 860, y: 180, lat: '35.68N', lng: '139.65E', thought: '在一亿人里漂流，也是一种自由。', log: '涩谷人潮活跃。', desc: '涩谷十字路口的汹涌，是城市最狂乱的心跳。你在这洪流中保持着唯一的节奏。', routes: ['涩谷穿行', '银座霓虹', '上野落樱', '新宿之眼', '千代田风'], routeImages: ['https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1554797589-7241bb691973?w=300&h=300&fit=crop'] },
             { id: 'Taipei', name: '台北', x: 815, y: 235, lat: '25.03N', lng: '121.56E', thought: '烟火气里藏着温柔。', log: '象山视角开阔。', desc: '巷弄里的烟火气是生活的底色。101的阴影掠过街角，你正穿行在怀旧的慢板与现代的极速之间。', routes: ['台北101', '士林烟火', '淡水暮色', '九份山径', '象山远眺'], routeImages: ['https://images.unsplash.com/photo-1552912110-67259461280b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1534008757030-27299c4371b6?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1533227268408-a774655d8c3b?w=300&h=300&fit=crop'] },
             { id: 'Singapore', name: '新加坡', x: 765, y: 345, lat: '1.35N', lng: '103.81E', thought: '赛博森林在呼吸。', log: '滨海湾光能转换中。', desc: '在这个钢铁与热带雨林共生的奇迹里，赤道的光辉让每片叶子都在呼吸。', routes: ['滨海湾光', '圣淘沙浪', '牛车水韵', '克拉码头', '鱼尾狮印'], routeImages: ['https://images.unsplash.com/photo-1525625230556-8e8b8e96978e?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1558231261-26922a00f2e0?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1543833078-05500ce793e8?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1510009489794-352fba39acd3?w=300&h=300&fit=crop'] },
-            { id: 'Sydney', name: '悉尼', x: 840, y: 445, lat: '33.86S', lng: '151.20E', thought: '白色风帆是大洋情书。', log: '海港大桥已开放。', desc: '南半球的海风吹动歌剧院的洁白帆影。阳光洒在邦迪海滩。', routes: ['歌剧风帆', '海港大桥', '邦迪海滩', '达令港湾', '岩石区影'], routeImages: ['https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1524820197278-540916411e20?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=300&h=300&fit=crop'] },
+            { id: 'Sydney', name: '悉尼', x: 840, y: 445, lat: '33.86S', lng: '151.20E', thought: '白色风帆是大洋情书。', log: '海港大桥已开放。', desc: '南半球的海风吹动歌剧院的洁白帆影。', routes: ['歌剧风帆', '海港大桥', '邦迪海滩', '达令港湾', '岩石区影'], routeImages: ['https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1524820197278-540916411e20?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=300&h=300&fit=crop'] },
             { id: 'Rio', name: '里约', x: 280, y: 360, lat: '22.90S', lng: '43.17W', thought: '上帝注视下的舞步。', log: '沙滩狂欢周期开启。', desc: '科科瓦多山的基督像张开双臂，守护着这片狂野的大地。', routes: ['基督之光', '面包山脊', '萨巴律动', '科帕海滩', '贫民窟画'], routeImages: ['https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1490604001847-b712b0c2f967?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1591461530184-e9be75cc4013?w=300&h=300&fit=crop'] },
-            { id: 'NewYork', name: '纽约', x: 235, y: 145, lat: '40.71N', lng: '74.00W', thought: '灯光不曾照亮孤独。', log: '华尔街步频新高。', desc: '在摩天大楼的丛林里，时代广场的灯火永不熄灭。你是这个钢筋宇宙里的开拓者。', routes: ['时代广场', '中央公园', '布鲁克林', '华尔街风', '自由之火'], routeImages: ['https://images.unsplash.com/photo-1496871455396-14e56815f1f4?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1516339901600-2e1a62dc0c45?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=300&h=300&fit=crop'] },
+            { id: 'NewYork', name: '纽约', x: 235, y: 145, lat: '40.71N', lng: '74.00W', thought: '灯光不曾照亮孤独。', log: '华尔街步频新高。', desc: '在摩天大楼的丛林里，时代广场的灯火永不熄灭。', routes: ['时代广场', '中央公园', '布鲁克林', '华尔街风', '自由之火'], routeImages: ['https://images.unsplash.com/photo-1496871455396-14e56815f1f4?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1516339901600-2e1a62dc0c45?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=300&h=300&fit=crop'] },
             { id: 'Chicago', name: '芝加哥', x: 205, y: 140, lat: '41.87N', lng: '87.62W', thought: '银色豆子里的梦。', log: '林肯公园已就绪。', desc: '风之城的云门映出扭曲的都市丛林。', routes: ['云门镜像', '海军码头', '密歇根道', '威利斯高', '林肯公园'], routeImages: ['https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1471306224500-6d0d218be372?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1490644659542-bc393ef847c2?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1490131411312-b2ee2fe9da12?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1444212477490-ca407925329e?w=300&h=300&fit=crop'] },
             { id: 'LosAngeles', name: '洛杉矶', x: 145, y: 185, lat: '34.05N', lng: '118.24W', thought: '名字不如晚霞。', log: '天文台适合冥想。', desc: '好莱坞的星光不如身后的晚霞灿烂。', routes: ['好莱坞星', '圣莫尼卡', '比弗利山', '天文台影', '曼巴精神'], routeImages: ['https://images.unsplash.com/photo-1541336032412-2048a678540d?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1502899576159-f224dc23efb7?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1506377247377-2a5b3b0ca7df?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1445011713480-77a837ca7f7c?w=300&h=300&fit=crop'] },
             { id: 'London', name: '伦敦', x: 470, y: 110, lat: '51.50N', lng: '0.12W', thought: '大本钟准时响起。', log: '站台魔力溢出。', desc: '泰晤士河的迷雾掩盖了岁月的痕迹。', routes: ['大本钟声', '塔桥落日', '海德晨跑', '西区魅影', '国王十字'], routeImages: ['https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=300&h=300&fit=crop'] },
