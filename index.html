@@ -36,7 +36,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* 旅行日志滚动条优化 */
         .log-scrollbar::-webkit-scrollbar { width: 3px; }
         .log-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 10px; }
         .log-scrollbar::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; box-shadow: 0 0 5px var(--accent); }
@@ -141,7 +140,6 @@
         .voice-city-tag::after { content: ''; flex: 1; height: 1px; background: rgba(45, 212, 191, 0.15); }
         .inner-voice-bar p { font-size: 12px; color: #fff; opacity: 0.9; font-style: italic; line-height: 1.5; }
 
-        /* 旅行日志窗口样式 */
         .mission-log-modal {
             position: fixed; inset: 0;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(25px);
@@ -169,7 +167,6 @@
         .log-entry-time { color: var(--accent); font-size: 9px; margin-bottom: 6px; font-weight: 900; letter-spacing: 1px; opacity: 0.9; }
         .log-entry-content { line-height: 1.7; color: rgba(255,255,255,1); word-break: break-word; }
 
-        /* 日志入口按钮 (布局调整：移除绝对定位) */
         .log-entry-btn {
             background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px); padding: 12px 22px; border-radius: 99px;
@@ -180,7 +177,6 @@
         }
         .log-entry-btn:active { transform: scale(0.92); background: rgba(255,255,255,0.2); }
 
-        /* 路线卡片 */
         .route-card {
             width: 100%; padding: 14px; border-radius: 1.5rem;
             background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
@@ -196,7 +192,6 @@
         .route-title { font-size: 15px; color: #fff; font-weight: 700; line-height: 1.4; margin-bottom: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .route-status-tag { font-size: 10px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* 抉择页差异化加强 */
         .picker-card { 
             background: rgba(255,255,255,0.03); border: 1.5px solid rgba(255,255,255,0.08); 
             border-radius: 1.6rem; padding: 26px; width: 100%; margin-bottom: 20px; 
@@ -205,7 +200,6 @@
         }
         .picker-card:active { transform: scale(0.95); }
         
-        /* 低中高消耗视觉区分 */
         .cost-low { border-color: var(--accent); }
         .cost-mid { border-color: var(--gold); background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 60%); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .cost-high { border-color: var(--danger); background: linear-gradient(135deg, rgba(251, 113, 133, 0.08) 0%, transparent 70%); box-shadow: 0 15px 40px rgba(251, 113, 133, 0.15); }
@@ -222,7 +216,6 @@
         .tag-mid { background: rgba(212, 175, 55, 0.15); color: var(--gold); }
         .tag-high { background: rgba(251, 113, 133, 0.15); color: var(--danger); }
 
-        /* 护照 UI */
         .passport-card {
             background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
             border: 1px solid rgba(255, 255, 255, 0.15); border-left: 4px solid var(--accent);
@@ -253,46 +246,43 @@
             </div>
         </header>
 
-        <!-- 用户卡片 -->
-        <div class="grid grid-cols-2 gap-4 px-6 mt-4">
-            <div class="bg-[#a855f7] rounded-[2rem] p-6 text-white relative overflow-hidden app-card-shadow shadow-indigo-500/20">
+        <div class="grid grid-cols-5 gap-4 px-6 mt-4">
+            <div class="col-span-3 bg-[#a855f7] rounded-[2rem] p-6 text-white relative overflow-hidden app-card-shadow shadow-indigo-500/20">
                 <div class="flex justify-between items-start mb-4">
                     <div class="w-12 h-12 rounded-full border-2 border-white/40 overflow-hidden shadow-inner">
                         <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lucky" alt="avatar">
                     </div>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 18 6-6-6-6"/></svg>
                 </div>
-                <h3 class="font-bold text-xl">木小六同学</h3>
+                <h3 class="font-bold text-xl leading-tight">木小六同学</h3>
                 <div class="mt-2 flex items-center gap-2">
                     <span id="home-rank-badge" class="bg-white/20 px-2 py-0.5 rounded text-[10px] font-black">LV.3 钻石</span>
                 </div>
                 <div class="w-full h-1 bg-white/20 rounded-full mt-4 overflow-hidden"><div class="h-full bg-white w-2/3 shadow-[0_0_8px_#fff]"></div></div>
             </div>
-            <div class="bg-[#E9FF97] rounded-[2rem] p-6 flex flex-col justify-between app-card-shadow border border-white">
-                <div class="flex justify-between items-start">
-                    <div><p class="text-slate-600 text-[10px] font-black uppercase opacity-60 tracking-wider">完成城市</p><h4 id="home-city-count" class="text-4xl font-black text-slate-800 tracking-tighter">1</h4></div>
-                    <div class="bg-white/60 p-2 rounded-xl shadow-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+
+            <div class="col-span-2 flex flex-col gap-3">
+                <div class="bg-[#E9FF97] rounded-[1.8rem] p-4 flex flex-col justify-between flex-1 border border-white app-card-shadow">
+                    <div class="flex justify-between items-start">
+                        <div><p class="text-slate-600 text-[8px] font-black uppercase opacity-60">完成城市</p><h4 id="home-city-count" class="text-2xl font-black text-slate-800 tracking-tighter">1</h4></div>
+                        <div class="bg-white/60 p-1.5 rounded-lg shadow-sm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="3"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+                    </div>
+                    <div class="border-t border-slate-800/10 mt-2 pt-2">
+                        <p class="text-slate-600 text-[8px] font-black uppercase opacity-60">完成路线</p><h4 class="text-xl font-black text-slate-800">5</h4>
+                    </div>
                 </div>
-                <div class="flex justify-between items-end border-t border-slate-800/10 pt-4">
-                    <div><p class="text-slate-600 text-[10px] font-black uppercase opacity-60 tracking-wider">完成路线</p><h4 class="text-2xl font-black text-slate-800">5</h4></div>
-                    <div class="bg-white/60 p-2 rounded-xl shadow-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg></div>
+                <div class="bg-sky-500 rounded-[1.8rem] p-4 flex flex-col justify-center items-center relative overflow-hidden app-card-shadow transition-transform active:scale-95 cursor-pointer">
+                    <div class="z-10 text-center">
+                        <p class="text-white text-[8px] font-black uppercase opacity-80">跑步战力</p>
+                        <h4 class="text-white text-lg font-black italic">排行榜</h4>
+                    </div>
+                    <div class="absolute -right-2 -bottom-2 w-16 h-16 opacity-30">
+                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/winner-trophy-cup-with-podium-5643444-4700098.png" alt="cup" class="w-full h-full object-contain rotate-12">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- 跑步战力排行榜入口 -->
-        <div class="px-6 mt-6">
-            <div class="bg-sky-500 rounded-[2.5rem] h-36 relative overflow-hidden app-card-shadow flex items-center px-10">
-                <div class="z-10 animate__animated animate__fadeInLeft"><h2 class="text-white text-3xl font-black italic tracking-tighter leading-none">跑步战力</h2><h2 class="text-white text-3xl font-black mt-1">排行榜</h2></div>
-                <div class="absolute right-0 bottom-0 w-44 h-44 opacity-100 pointer-events-none">
-                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/winner-trophy-cup-with-podium-5643444-4700098.png" 
-                         alt="奖杯" class="w-full h-full object-contain transform translate-y-2 translate-x-4 scale-110"
-                         onerror="this.src='https://cdn-icons-png.flaticon.com/512/3112/3112946.png'">
-                </div>
-            </div>
-        </div>
-
-        <!-- 探索世界入口 -->
         <div class="px-6 mt-6">
             <button onclick="toStep(1)" class="w-full bg-slate-900 rounded-[2.5rem] p-7 relative overflow-hidden app-card-shadow text-left active:scale-[0.98] transition-all">
                 <div class="absolute top-0 right-0 w-64 h-full bg-gradient-to-l from-teal-500/20 to-transparent"></div>
@@ -307,7 +297,6 @@
             </button>
         </div>
 
-        <!-- 城市进度板块 -->
         <div class="px-6 mt-6">
             <div class="bg-white rounded-[2.5rem] p-8 app-card-shadow border border-slate-100">
                 <div class="flex justify-between items-center mb-8">
@@ -334,7 +323,6 @@
                 </div>
 
                 <div id="home-route-list" class="space-y-6">
-                    <!-- 路线卡片 -->
                     <div class="bg-slate-50 rounded-[2.2rem] p-5 flex gap-5 border border-slate-100 transition-transform active:scale-[0.98]">
                         <div class="w-24 h-24 rounded-3xl overflow-hidden relative shrink-0 shadow-md">
                             <img src="https://images.unsplash.com/photo-1599591452655-08e08d6d6da7?w=300&h=300&fit=crop" class="w-full h-full object-cover">
@@ -359,7 +347,6 @@
             </div>
         </div>
 
-        <!-- 底部导航 -->
         <nav class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-2xl border-t border-slate-100 px-10 py-4 flex justify-between items-center z-50 shadow-[0_-5px_20px_rgba(0,0,0,0.03)]">
             <div class="flex flex-col items-center gap-1.5 text-orange-500 cursor-pointer" onclick="toStep(0)"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="text-[11px] font-black">首页</span></div>
             <div class="flex flex-col items-center gap-1.5 text-slate-400 cursor-pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg><span class="text-[11px] font-bold">社区</span></div>
@@ -368,35 +355,44 @@
         </nav>
     </section>
 
-    <!-- STEP 1: 觉醒 -->
+    <!-- STEP 1: 觉醒 (文案深度定制) -->
     <section id="step-1" class="scene immersive-theme items-center justify-center p-10 text-center">
         <div class="star-bg"></div>
         <div class="max-w-xs animate__animated animate__fadeIn">
-            <h2 class="text-teal-400 text-[9px] tracking-[0.6em] mb-8 font-bold uppercase opacity-60">The World Calling</h2>
-            <h1 class="serif text-4xl mb-12 leading-tight tracking-tighter text-white font-bold">跑遍全世界</h1>
-            <div class="space-y-8 text-gray-200 text-sm leading-relaxed mb-16 px-4">
-                <p>鼠标在无穷的像素间迁徙，却从未触碰到真实的晚风。</p>
-                <p class="text-white opacity-95 font-bold">你想起十岁那年指尖划过的地球仪，那里装载过整个星辰大海。</p>
-                <p>梦还在。跑回来。</p>
+            <h2 class="text-teal-400 text-[9px] tracking-[0.6em] mb-6 font-bold uppercase opacity-60">MUWEI 6 · THE WORLD</h2>
+            <h1 class="serif text-4xl mb-8 leading-tight tracking-tighter text-white font-bold">打破方寸之限</h1>
+            <div class="space-y-5 text-gray-200 text-xs leading-relaxed mb-10 px-2 text-left max-h-80 overflow-y-auto no-scrollbar">
+                <p>长期以来，跑步机上的奔跑总逃不过枯燥的循环：<span class="text-white font-bold">机械重复的脚步，看不见尽头的前方。</span></p>
+                <p>最终，它们大多沦为了家里的<span class="text-orange-400 font-bold italic">“晾衣架”</span>，辜负了每一份想运动的初心。</p>
+                <div class="h-px w-full bg-white/10 my-2"></div>
+                <p class="text-teal-400 font-bold">木卫六，为你打破这份枯燥困局。</p>
+                <p>我们不再硬扛着坚持，而是用探索世界的好奇心代替重复。我们将全球真实城市路线，一键带进你的家里。</p>
+                <p class="text-white/80 italic">不用机票，不用假期，世界就在脚下缓缓延展。让每一次抬脚，都有风景相伴。</p>
             </div>
-            <button onclick="toStep(2)" class="btn-luxury w-full shadow-lg shadow-teal-500/10">唤醒沉睡的步伐</button>
+            <button onclick="toStep(2)" class="btn-luxury w-full shadow-lg shadow-teal-500/20">开启治愈之旅</button>
             <button onclick="toStep(0)" class="mt-8 text-[10px] text-white/30 tracking-[0.3em] uppercase font-bold border-b border-white/5 pb-1">返回首页</button>
         </div>
     </section>
 
-    <!-- STEP 2: 人格选择 -->
+    <!-- STEP 2: 定义探索之眼 (文案更新) -->
     <section id="step-2" class="scene immersive-theme items-center justify-center p-6">
         <div class="star-bg"></div>
         <div class="w-full max-w-xs">
             <h2 class="serif text-3xl mb-4 text-center text-white tracking-tight">定义探索之眼</h2>
-            <p class="text-gray-400 text-[11px] text-center mb-12 font-bold tracking-widest">剥去职场身份，你希望如何重逢星球？</p>
+            <p class="text-gray-400 text-[11px] text-center mb-12 font-bold tracking-widest uppercase">Select Your Movement Persona</p>
             <div class="space-y-5">
-                <button onclick="selectStyle('孤山隐士')" class="w-full p-7 flex justify-between items-center group active:bg-white/5 transition-all bg-white/5 border border-white/10 rounded-2xl">
-                    <div class="text-left"><div class="font-black text-xl text-white mb-1 tracking-tighter">孤山隐士</div><div class="text-[9px] text-gray-500 uppercase tracking-widest font-black">Minimalist · Silent</div></div>
+                <button onclick="selectStyle('极限竞技跑者')" class="w-full p-7 flex justify-between items-center group active:bg-white/5 transition-all bg-white/5 border border-white/10 rounded-2xl">
+                    <div class="text-left">
+                        <div class="font-black text-xl text-white mb-1 tracking-tighter">极限竞技跑者</div>
+                        <div class="text-[9px] text-gray-500 uppercase tracking-widest font-black leading-relaxed">追求极限配速 · 在心跳声中征服赛道</div>
+                    </div>
                     <div class="text-teal-400 font-black text-xl">→</div>
                 </button>
-                <button onclick="selectStyle('城市猎人')" class="w-full p-7 flex justify-between items-center group active:bg-white/5 transition-all bg-white/5 border border-white/10 rounded-2xl">
-                    <div class="text-left"><div class="font-black text-xl text-white mb-1 tracking-tighter">城市猎人</div><div class="text-[9px] text-gray-500 uppercase tracking-widest font-black">Dynamic · Pulsing</div></div>
+                <button onclick="selectStyle('环球深度旅人')" class="w-full p-7 flex justify-between items-center group active:bg-white/5 transition-all bg-white/5 border border-white/10 rounded-2xl">
+                    <div class="text-left">
+                        <div class="font-black text-xl text-white mb-1 tracking-tighter">环球深度旅人</div>
+                        <div class="text-[9px] text-gray-500 uppercase tracking-widest font-black leading-relaxed">慢跑穿梭街巷 · 收集世界角落的晨曦</div>
+                    </div>
                     <div class="text-teal-400 font-black text-xl">→</div>
                 </button>
             </div>
@@ -430,7 +426,6 @@
 
         <div class="map-viewport" id="map-viewport"><svg id="world-map" class="world-map-svg" viewBox="0 0 1000 500"><g id="land-layer"></g><g id="flight-paths-layer"></g><g id="nodes-layer"></g></svg></div>
         
-        <!-- 修改布局：将日志按钮放在开启探索挑战正下方 -->
         <div class="fixed bottom-10 left-0 w-full flex flex-col items-center gap-3 px-8 z-30">
             <button id="btn-next-target" class="btn-luxury w-full max-w-xs border-teal-400/30 text-teal-400 bg-teal-400/10 backdrop-blur-md font-black tracking-[0.4em]">开启探索挑战</button>
             <button onclick="openLog()" class="log-entry-btn w-full max-w-xs animate__animated animate__fadeInUp">
@@ -444,14 +439,14 @@
     <section id="step-4" class="scene immersive-theme items-center justify-center p-8 bg-black/98">
         <div class="absolute top-10 left-6"><button onclick="toStep(3)" class="text-xs text-white/50 border border-white/10 px-5 py-2.5 rounded-full tracking-widest font-black uppercase">返回地图</button></div>
         <div class="max-w-xs text-center animate__animated animate__fadeIn">
-            <div class="inline-block px-4 py-1 border border-teal-500/10 text-teal-400 text-[9px] uppercase tracking-[0.5em] mb-10 rounded-full font-black">New Realm Unlocked</div>
+            <div class="inline-block px-4 py-1 border border-teal-500/10 text-teal-400 text-[9px] uppercase tracking-[0.5em] mb-10 rounded-full font-black italic">Next Horizon Unlocked</div>
             <h2 id="target-city-name" class="serif text-7xl mb-12 tracking-tighter text-white font-black italic">---</h2>
             <p id="target-city-desc" class="text-gray-300 text-sm leading-loose px-2 serif italic mb-16 opacity-90"></p>
             <button onclick="toStep(5)" class="btn-luxury bg-white text-black font-black w-full py-5 border-none shadow-xl shadow-white/10">深入探索挑战</button>
         </div>
     </section>
 
-    <!-- STEP 5: 路线挑战 -->
+    <!-- STEP 5-7 (省略部分以节省空间，脚本中包含全部数据) -->
     <section id="step-5" class="scene immersive-theme p-6 bg-black">
         <div class="w-full h-full flex flex-col relative pt-20">
             <div class="absolute top-6 left-0"><button onclick="toStep(3)" class="text-xs text-white/50 border border-white/10 px-5 py-2.5 rounded-full font-black tracking-widest uppercase">返回地图</button></div>
@@ -466,12 +461,10 @@
             <div class="relative text-center w-full max-w-xs">
                 <div class="mb-16"><div class="text-7xl font-black text-teal-400 mb-6 tracking-tighter italic" id="explore-progress-text">0%</div><div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden"><div id="explore-progress-bar" class="h-full bg-teal-400 transition-all duration-300 shadow-[0_0_15px_var(--accent)]" style="width: 0%"></div></div></div>
                 <button id="tap-run-btn" class="w-44 h-44 rounded-full border border-white/10 flex items-center justify-center mx-auto bg-white/5 active:scale-90 active:bg-white/10 transition-all shadow-2xl"><span class="text-teal-400 font-black text-5xl italic">RUN</span></button>
-                <div class="mt-12 text-[10px] text-white/20 tracking-[0.4em] font-black uppercase">同步播放目的地实景视频</div>
             </div>
         </div>
     </section>
 
-    <!-- STEP 6: 护照 -->
     <section id="step-6" class="scene immersive-theme items-center justify-center p-6 bg-black/99 overflow-y-auto no-scrollbar">
         <div class="w-full max-w-xs pt-4 mb-4">
             <div class="passport-card w-full p-8 pt-10 animate__animated animate__zoomIn">
@@ -485,42 +478,43 @@
                     <div class="grid grid-cols-2 gap-4"><div><p class="text-[8px] text-white/30 uppercase mb-2 font-black tracking-widest">灵魂人格</p><p id="user-style" class="serif text-xl font-bold text-white tracking-tighter">---</p></div><div><p class="text-[8px] text-white/30 uppercase mb-2 font-black tracking-widest">已解锁城市</p><p id="earned-city" class="serif text-xl font-black italic text-teal-400 tracking-tighter">---站</p></div></div>
                     <div class="passport-data-box"><div class="grid grid-cols-3 gap-2 text-center"><div><p class="text-[7px] text-white/40 uppercase font-black mb-1.5">累计里程</p><p id="summary-dist" class="text-[11px] font-black text-white">-- km</p></div><div class="border-x border-white/5"><p class="text-[7px] text-white/40 uppercase font-black mb-1.5">运动时长</p><p id="summary-time" class="text-[11px] font-black text-white">-- min</p></div><div><p class="text-[7px] text-white/40 uppercase font-black mb-1.5">能量消耗</p><p id="summary-kcal" class="text-[11px] font-black text-white">-- kcal</p></div></div></div>
                     <div class="flex justify-between items-center px-4 py-3 bg-teal-500/10 rounded-xl border border-teal-500/20"><div class="flex items-center gap-2"><div class="w-6 h-6 bg-teal-400 rounded-lg flex items-center justify-center shadow-lg"><svg width="12" height="12" viewBox="0 0 24 24" fill="black"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><span class="text-[9px] text-teal-400 uppercase font-black tracking-widest">当前总战力</span></div><span id="summary-combat" class="font-black text-xl italic text-teal-400">--</span></div>
-                    <div class="pt-6 border-t border-dashed border-white/10 flex justify-center relative min-h-[60px]"><div id="stamp-box" class="stamp-effect font-black text-xl px-6 py-2 uppercase tracking-tighter">核准通过</div></div>
+                    <div class="pt-6 border-t border-dashed border-white/10 flex justify-center relative min-h-[60px] text-center">
+                        <div id="stamp-box" class="stamp-effect font-black text-xl px-6 py-2 uppercase tracking-tighter">足不出户 · 跑遍全球</div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="w-full max-w-xs space-y-4 mb-10"><button onclick="toStep(7)" class="btn-luxury w-full bg-white text-black font-black border-none py-5 tracking-[0.4em]">开启下一航段抉择</button><button onclick="toStep(3)" class="btn-luxury w-full border-white/20 text-white/80 bg-transparent text-[10px] font-black py-4 tracking-widest">返回世界地图</button></div>
     </section>
 
-    <!-- STEP 7: 抉择页 -->
     <section id="step-7" class="scene immersive-theme items-center justify-center p-8 bg-black/99 overflow-y-auto no-scrollbar">
         <div class="w-full max-w-xs animate__animated animate__fadeIn text-center">
             <p class="text-teal-400 text-[10px] tracking-[0.6em] mb-4 font-black uppercase">Navigator Choice</p>
             <h2 class="serif text-4xl text-white font-black tracking-tight">航道抉择</h2>
-            <div class="mt-6 inline-flex items-center gap-3 px-5 py-2 bg-white/5 rounded-full border border-white/10 shadow-lg shadow-black"><span class="text-[10px] text-white/40 font-black tracking-widest">战力储备:</span><span id="picker-combat-val" class="text-teal-400 font-black text-sm italic">0</span><span class="text-[8px] text-teal-400/40 ml-2 font-black italic">航程决定代价</span></div>
+            <div class="mt-6 inline-flex items-center gap-3 px-5 py-2 bg-white/5 rounded-full border border-white/10 shadow-lg shadow-black"><span class="text-[10px] text-white/40 font-black tracking-widest">战力储备:</span><span id="picker-combat-val" class="text-teal-400 font-black text-sm italic">0</span></div>
             <div id="city-picker-list" class="space-y-6 mt-12"></div>
             <div class="mt-12 mb-8"><button onclick="toStep(6)" class="text-[10px] text-white/30 uppercase tracking-[0.4em] font-black border-b border-white/10 pb-1.5">返回护照结算</button></div>
         </div>
     </section>
 
     <script>
-        // 全部 15 个全球城市故事链已恢复
+        // 核心脚本与 storyChain 描述已根据新文案更新
         const storyChain = [
             { id: 'Hangzhou', name: '杭州', x: 800, y: 195, lat: '30.27N', lng: '120.15E', thought: '西湖的晨曦，比屏幕亮多了。', log: '西湖水汽充足，适宜奔跑。这是梦醒的第一站。', desc: '在断桥的烟雨中，你听见那个十岁小孩在旧地图前许下的诺言。杭州的温润包裹着你，每一步都是在与过去的自己重逢，湖光山色是最好的洗尘礼。', routes: ['西湖：柳浪闻莺', '龙井：云雾深处', '灵隐：空山梵呗', '运河：旧梦长廊', '良渚：最初心跳'], routeImages: ['https://images.unsplash.com/photo-1599591452655-08e08d6d6da7?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1543161353-85f403f2956c?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1597523910901-526462725838?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1590487988256-9ed24133863e?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1563242080-87a2688b146f?w=300&h=300&fit=crop'] },
-            { id: 'Beijing', name: '北京', x: 790, y: 155, lat: '39.90N', lng: '116.40E', thought: '红墙下的风，带着几千年的重量。', log: '中轴线磁场平稳，历史的脉搏正在加速。', desc: '站在世界的脊梁上，中轴线的红墙在阳光下威严而沉默。跑过胡同深处的烟火，跨过万里的长城残垣，感受跨越两千年的磅礴回响，这不仅是路，更是脊梁。', routes: ['中轴威仪', '故宫斜阳', '皇家晚风', '长城脊梁', '什刹烟火'], routeImages: ['https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1555505012-320485675e87?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1529921879218-f99546d03a9d?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1536647245842-8820c7844062?w=300&h=300&fit=crop'] },
+            { id: 'Beijing', name: '北京', x: 790, y: 155, lat: '39.90N', lng: '116.40E', thought: '穿梭在北京的街巷，遇见惊喜。', log: '中轴线磁场平稳。', desc: '穿梭在北京的街巷，遇见熟悉风景里的全新惊喜。红墙下的风带着几千年的重量，跑过胡同深处的烟火，跨过长城残垣，感受跨越两千年的磅礴回响。', routes: ['中轴威仪', '故宫斜阳', '皇家晚风', '长城脊梁', '什刹烟火'], routeImages: ['https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1555505012-320485675e87?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1529921879218-f99546d03a9d?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1536647245842-8820c7844062?w=300&h=300&fit=crop'] },
+            { id: 'Paris', name: '巴黎', x: 480, y: 130, lat: '48.85N', lng: '2.35E', thought: '踏着晨光，感受浪漫烟火气。', log: '铁塔已锁定。', desc: '你可以踏着晨光，在巴黎街角慢跑，感受法式浪漫的烟火气。让自由的灵魂在巴黎迷人的夜色中升华，每一次抬脚，都有世界级的艺术相伴。', routes: ['铁塔流光', '卢浮寻宝', '蒙马特影', '塞纳河畔', '凯旋之火'], routeImages: ['https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1509439581779-6298f75bf6e5?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1549421263-524682497658?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1520939817794-069663740906?w=300&h=300&fit=crop'] },
+            { id: 'Tokyo', name: '东京', x: 860, y: 180, lat: '35.68N', lng: '139.65E', thought: '捕捉都市清晨的静谧与鲜活。', log: '涩谷人潮活跃。', desc: '迎着朝阳，在东京街头前行，捕捉都市清晨的静谧与鲜活。你在这一亿人的节奏中寻找唯一的放空时刻，遇见更好的自己。', routes: ['涩谷穿行', '银座霓虹', '上野落樱', '新宿之眼', '千代田风'], routeImages: ['https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1554797589-7241bb691973?w=300&h=300&fit=crop'] },
+            { id: 'Sydney', name: '悉尼', x: 840, y: 445, lat: '33.86S', lng: '151.20E', thought: '听海浪与脚步共鸣。', log: '海港大桥已开放。', desc: '伴着海风，沿着悉尼海岸奔跑，听海浪与脚步共鸣。南半球的海风吹动洁白帆影，在太平洋彼岸遇见最治愈的短途旅行。', routes: ['歌剧风帆', '海港大桥', '邦迪海滩', '达令港湾', '岩石区影'], routeImages: ['https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1524820197278-540916411e20?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=300&h=300&fit=crop'] },
             { id: 'Seoul', name: '首尔', x: 820, y: 160, lat: '37.56N', lng: '126.97E', thought: '霓虹闪烁得让人想跳舞。', log: '汉江水位正常。', desc: '汉江的涟漪映照着数字时代的霓虹。在这里，古老的景福宫与江南的律动奇妙并存。', routes: ['汉江晓月', '景福宫阙', '北村古意', '南山塔影', '江南律动'], routeImages: ['https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1524311588144-839070381f21?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?w=300&h=300&fit=crop'] },
-            { id: 'Tokyo', name: '东京', x: 860, y: 180, lat: '35.68N', lng: '139.65E', thought: '在一亿人里漂流，也是一种自由。', log: '涩谷人潮活跃。', desc: '涩谷十字路口的汹涌，是城市最狂乱的心跳。你在这洪流中保持着唯一的节奏。', routes: ['涩谷穿行', '银座霓虹', '上野落樱', '新宿之眼', '千代田风'], routeImages: ['https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1554797589-7241bb691973?w=300&h=300&fit=crop'] },
-            { id: 'Taipei', name: '台北', x: 815, y: 235, lat: '25.03N', lng: '121.56E', thought: '烟火气里藏着温柔。', log: '象山视角开阔。', desc: '巷弄里的烟火气是生活的底色。101的阴影掠过街角，你正穿行在怀旧的慢板与现代的极速之间。', routes: ['台北101', '士林烟火', '淡水暮色', '九份山径', '象山远眺'], routeImages: ['https://images.unsplash.com/photo-1552912110-67259461280b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1534008757030-27299c4371b6?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1533227268408-a774655d8c3b?w=300&h=300&fit=crop'] },
-            { id: 'Singapore', name: '新加坡', x: 765, y: 345, lat: '1.35N', lng: '103.81E', thought: '赛博森林在呼吸。', log: '滨海湾光能转换中。', desc: '在这个钢铁与热带雨林共生的奇迹里，赤道的光辉让每片叶子都在呼吸。', routes: ['滨海湾光', '圣淘沙浪', '牛车水韵', '克拉码头', '鱼尾狮印'], routeImages: ['https://images.unsplash.com/photo-1525625230556-8e8b8e96978e?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1558231261-26922a00f2e0?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1543833078-05500ce793e8?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1510009489794-352fba39acd3?w=300&h=300&fit=crop'] },
-            { id: 'Sydney', name: '悉尼', x: 840, y: 445, lat: '33.86S', lng: '151.20E', thought: '白色风帆是大洋情书。', log: '海港大桥已开放。', desc: '南半球的海风吹动歌剧院的洁白帆影。', routes: ['歌剧风帆', '海港大桥', '邦迪海滩', '达令港湾', '岩石区影'], routeImages: ['https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1524820197278-540916411e20?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1549490349-8643362247b5?w=300&h=300&fit=crop'] },
+            { id: 'Taipei', name: '台北', x: 815, y: 235, lat: '25.03N', lng: '121.56E', thought: '烟火气里藏着温柔。', log: '象山视角开阔。', desc: '巷弄里的烟火气是生活的底色。101的阴影掠过街角，寻找最地道的温暖。', routes: ['台北101', '士林烟火', '淡水暮色', '九份山径', '象山远眺'], routeImages: ['https://images.unsplash.com/photo-1552912110-67259461280b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1534008757030-27299c4371b6?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1533227268408-a774655d8c3b?w=300&h=300&fit=crop'] },
+            { id: 'Singapore', name: '新加坡', x: 765, y: 345, lat: '1.35N', lng: '103.81E', thought: '赛博森林在呼吸。', log: '滨海湾光能转换中。', desc: '在这个钢铁与热带雨林共生的奇迹里。', routes: ['滨海湾光', '圣淘沙浪', '牛车水韵', '克拉码头', '鱼尾狮印'], routeImages: ['https://images.unsplash.com/photo-1525625230556-8e8b8e96978e?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1558231261-26922a00f2e0?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1543833078-05500ce793e8?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1510009489794-352fba39acd3?w=300&h=300&fit=crop'] },
             { id: 'Rio', name: '里约', x: 280, y: 360, lat: '22.90S', lng: '43.17W', thought: '上帝注视下的舞步。', log: '沙滩狂欢周期开启。', desc: '科科瓦多山的基督像张开双臂，守护着这片狂野的大地。', routes: ['基督之光', '面包山脊', '萨巴律动', '科帕海滩', '贫民窟画'], routeImages: ['https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1490604001847-b712b0c2f967?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1591461530184-e9be75cc4013?w=300&h=300&fit=crop'] },
             { id: 'NewYork', name: '纽约', x: 235, y: 145, lat: '40.71N', lng: '74.00W', thought: '灯光不曾照亮孤独。', log: '华尔街步频新高。', desc: '在摩天大楼的丛林里，时代广场的灯火永不熄灭。', routes: ['时代广场', '中央公园', '布鲁克林', '华尔街风', '自由之火'], routeImages: ['https://images.unsplash.com/photo-1496871455396-14e56815f1f4?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1516339901600-2e1a62dc0c45?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=300&h=300&fit=crop'] },
             { id: 'Chicago', name: '芝加哥', x: 205, y: 140, lat: '41.87N', lng: '87.62W', thought: '银色豆子里的梦。', log: '林肯公园已就绪。', desc: '风之城的云门映出扭曲的都市丛林。', routes: ['云门镜像', '海军码头', '密歇根道', '威利斯高', '林肯公园'], routeImages: ['https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1471306224500-6d0d218be372?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1490644659542-bc393ef847c2?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1490131411312-b2ee2fe9da12?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1444212477490-ca407925329e?w=300&h=300&fit=crop'] },
             { id: 'LosAngeles', name: '洛杉矶', x: 145, y: 185, lat: '34.05N', lng: '118.24W', thought: '名字不如晚霞。', log: '天文台适合冥想。', desc: '好莱坞的星光不如身后的晚霞灿烂。', routes: ['好莱坞星', '圣莫尼卡', '比弗利山', '天文台影', '曼巴精神'], routeImages: ['https://images.unsplash.com/photo-1541336032412-2048a678540d?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1502899576159-f224dc23efb7?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1506377247377-2a5b3b0ca7df?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1445011713480-77a837ca7f7c?w=300&h=300&fit=crop'] },
             { id: 'London', name: '伦敦', x: 470, y: 110, lat: '51.50N', lng: '0.12W', thought: '大本钟准时响起。', log: '站台魔力溢出。', desc: '泰晤士河的迷雾掩盖了岁月的痕迹。', routes: ['大本钟声', '塔桥落日', '海德晨跑', '西区魅影', '国王十字'], routeImages: ['https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=300&h=300&fit=crop'] },
-            { id: 'Paris', name: '巴黎', x: 480, y: 130, lat: '48.85N', lng: '2.35E', thought: '流动的盛宴。', log: '铁塔已锁定。', desc: '塞纳河畔的每一盏灯火都是流动的盛宴。', routes: ['铁塔流光', '卢浮寻宝', '蒙马特影', '塞纳河畔', '凯旋之火'], routeImages: ['https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1509439581779-6298f75bf6e5?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1549421263-524682497658?w=300&h=300&fit=crop','https://images.unsplash.com/photo-1520939817794-069663740906?w=300&h=300&fit=crop'] },
             { id: 'Rome', name: '罗马', x: 495, y: 155, lat: '41.90N', lng: '12.49E', thought: '每一粒沙见证一个帝国。', log: '古道颠簸。', desc: '在永恒之城的废墟中，时间仿佛停滞。', routes: ['竞技遗响', '万神殿光', '许愿池影', '梵帝冈门', '台伯河边'], routeImages: ['https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1529260830199-42c24126f198?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1515542641795-06ed223c3bd2?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1525874684015-58379d421a52?w=300&h=300&fit=crop'] },
-            { id: 'CapeTown', name: '开普敦', x: 520, y: 440, lat: '33.92S', lng: '18.42E', thought: '世界尽头的风。', log: '抵达终点。', desc: '桌山的云海从大西洋倾泻而下。', routes: ['桌山云海', '好望角风', '罗本岛思', '信号山火', '海滨广场'], routeImages: ['https://images.unsplash.com/photo-1580193703491-3e58c6af1506?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1576485736318-7b9ca4e1a742?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1580611417532-60193703491c?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=300&h=300&fit=crop'] }
+            { id: 'CapeTown', name: '开普敦', x: 520, y: 440, lat: '33.92S', lng: '18.42E', thought: '世界尽头的风。', log: '抵达终点。', desc: '桌山的云海从大西洋倾泻而下。当你跑遍世界，找回自己。', routes: ['桌山云海', '好望角风', '罗本岛思', '信号山火', '海滨广场'], routeImages: ['https://images.unsplash.com/photo-1580193703491-3e58c6af1506?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1576485736318-7b9ca4e1a742?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1580611417532-60193703491c?w=300&h=300&fit=crop', 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=300&h=300&fit=crop'] }
         ];
 
         let state = { 
